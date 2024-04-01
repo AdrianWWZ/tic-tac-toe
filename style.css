@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .container {
@@ -22,8 +23,58 @@ body {
 .input-box {
   width: 200px;
   height: 200px;
-  border: 1px solid red;
   color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-box:nth-child(1) {
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.input-box:nth-child(2) {
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.input-box:nth-child(3) {
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.input-box:nth-child(4) {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.input-box:nth-child(5) {
+  border: 2px solid white;
+}
+
+.input-box:nth-child(6) {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.input-box:nth-child(7) {
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.input-box:nth-child(8) {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.input-box:nth-child(9) {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
 }
 
 .input {
@@ -32,6 +83,16 @@ body {
   opacity: 0;
 }
 
-input:checked {
+.disabled {
   display: none;
+}
+
+.XBox {
+  font-size: 200px;
+  color: red;
+}
+
+.OBox {
+  font-size: 200px;
+  color: blue;
 }
