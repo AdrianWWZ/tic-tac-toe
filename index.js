@@ -14,8 +14,6 @@ const resetBoard = () => {
   sideText.innerHTML = "";
   if (sideText.classList.contains("X")) sideText.classList.remove("X");
   if (sideText.classList.contains("O")) sideText.classList.remove("O");
-
-  gameCount = 0;
 };
 
 const checkGameBoard = () => {
@@ -29,6 +27,8 @@ const checkGameBoard = () => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+  let noWin = true;
 
   winningPatterns.forEach((pattern) => {
     const a = pattern[0];
@@ -46,6 +46,7 @@ const checkGameBoard = () => {
       sideText.innerHTML = `<span>${gameBoard[a]}</span> Wins!`;
       sideText.classList.add(`${gameBoard[a]}`);
       console.log(`${gameBoard[a]} won!`);
+      noWin = false;
     }
   });
 
@@ -53,13 +54,14 @@ const checkGameBoard = () => {
   gameBoard.forEach((piece) => {
     if (piece === " ") isFull = false;
   });
-  if (isFull) {
+  if (isFull && noWin) {
     inputBoxes.forEach((inputBox) => {
       const input = inputBox.querySelector(".input");
       input.classList.add("disabled");
     });
     sideText.innerHTML = `Tie!`;
     console.log("tie");
+    document.querySelector(".continue").classList.remove("disabled");
   }
 };
 
@@ -89,7 +91,13 @@ inputBoxes.forEach((inputBox) => {
   });
 });
 
-const button = document.querySelector("button");
-button.addEventListener("click", () => {
+const resetButton = document.querySelector(".reset");
+resetButton.addEventListener("click", () => {
+  resetBoard();
+  gameCount = 0;
+});
+
+const continueButton = document.querySelector(".continue");
+continueButton.addEventListener("click", () => {
   resetBoard();
 });

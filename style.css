@@ -112,3 +112,29 @@ body {
   font-size: 200px;
   color: blue;
 }
+
+.button-container {
+  position: absolute;
+  right: 300px;
+  width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.reset,
+.continue {
+  width: 100%;
+  font-size: 32px;
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.reset:hover,
+.continue:hover {
+  opacity: 0.8;
+}
