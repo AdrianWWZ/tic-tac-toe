@@ -1,5 +1,6 @@
 let gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 let gameCount = 0;
+const sideText = document.querySelector(".win-text");
 
 const resetBoard = () => {
   gameBoard = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
@@ -9,6 +10,10 @@ const resetBoard = () => {
     input.classList.remove("disabled");
     if (inputBox.children[1]) inputBox.removeChild(inputBox.children[1]);
   });
+
+  sideText.innerHTML = "";
+  if (sideText.classList.contains("X")) sideText.classList.remove("X");
+  if (sideText.classList.contains("O")) sideText.classList.remove("O");
 
   gameCount = 0;
 };
@@ -34,8 +39,13 @@ const checkGameBoard = () => {
       gameBoard[a] === gameBoard[b] &&
       gameBoard[b] === gameBoard[c]
     ) {
+      inputBoxes.forEach((inputBox) => {
+        const input = inputBox.querySelector(".input");
+        input.classList.add("disabled");
+      });
+      sideText.innerHTML = `<span>${gameBoard[a]}</span> Wins!`;
+      sideText.classList.add(`${gameBoard[a]}`);
       console.log(`${gameBoard[a]} won!`);
-      resetBoard();
     }
   });
 
@@ -44,8 +54,12 @@ const checkGameBoard = () => {
     if (piece === " ") isFull = false;
   });
   if (isFull) {
+    inputBoxes.forEach((inputBox) => {
+      const input = inputBox.querySelector(".input");
+      input.classList.add("disabled");
+    });
+    sideText.innerHTML = `Tie!`;
     console.log("tie");
-    resetBoard();
   }
 };
 
