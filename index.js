@@ -14,6 +14,8 @@ const resetBoard = () => {
   sideText.innerHTML = "";
   if (sideText.classList.contains("X")) sideText.classList.remove("X");
   if (sideText.classList.contains("O")) sideText.classList.remove("O");
+
+  continueButton.classList.add("disabled");
 };
 
 const checkGameBoard = () => {
@@ -61,7 +63,7 @@ const checkGameBoard = () => {
     });
     sideText.innerHTML = `Tie!`;
     console.log("tie");
-    document.querySelector(".continue").classList.remove("disabled");
+    continueButton.classList.remove("disabled");
   }
 };
 
