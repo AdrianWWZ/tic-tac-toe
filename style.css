@@ -25,7 +25,7 @@ body {
 }
 
 .O span {
-  color: blue;
+  color: dodgerblue;
 }
 
 .container {
@@ -110,7 +110,7 @@ body {
 
 .OBox {
   font-size: 200px;
-  color: blue;
+  color: dodgerblue;
 }
 
 .button-container {

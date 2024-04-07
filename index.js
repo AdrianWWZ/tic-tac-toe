@@ -19,6 +19,20 @@ const resetBoard = () => {
 };
 
 const checkGameBoard = () => {
+  const namePlayer1 = document.querySelector(".player1").value;
+  const namePlayer2 = document.querySelector(".player2").value;
+
+  let nameDisplay;
+  if (gameCount % 2 === 0 && namePlayer1) {
+    nameDisplay = `<span>${namePlayer1}</span>`;
+  } else if (gameCount % 2 === 1 && namePlayer2) {
+    nameDisplay = `<span>${namePlayer2}</span>`;
+  } else if (gameCount % 2 === 0) {
+    nameDisplay = "<span>Player</span> 1";
+  } else {
+    nameDisplay = "<span>Player</span> 2";
+  }
+
   const winningPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -31,7 +45,6 @@ const checkGameBoard = () => {
   ];
 
   let noWin = true;
-
   winningPatterns.forEach((pattern) => {
     const a = pattern[0];
     const b = pattern[1];
@@ -45,7 +58,7 @@ const checkGameBoard = () => {
         const input = inputBox.querySelector(".input");
         input.classList.add("disabled");
       });
-      sideText.innerHTML = `<span>${gameBoard[a]}</span> Wins!`;
+      sideText.innerHTML = `${nameDisplay} Wins!`;
       sideText.classList.add(`${gameBoard[a]}`);
       console.log(`${gameBoard[a]} won!`);
       noWin = false;
@@ -85,11 +98,12 @@ inputBoxes.forEach((inputBox) => {
       inputBox.appendChild(div);
       gameBoard[input.value - 1] = "O";
     }
-    console.log(gameBoard);
-    gameCount++;
+
+    console.log(gameCount);
 
     input.classList.add("disabled");
     checkGameBoard();
+    gameCount++;
   });
 });
 
